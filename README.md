@@ -1,2 +1,3 @@
-# uvic-cfar.github.io
-public website
+UVic CfAR public website.
+
+https://uvic-cfar.github.io

@@ -1,0 +1,251 @@
+---
+# Process SCSS with Jekyll
+---
+@charset "UTF-8";
+
+$util-bg: black;
+$util-text: #9b9b9b;
+$util-text-highlight: white;
+
+$rem: 16px;
+$rlh: 1.125;
+$rline: $rlh * $rem;
+
+$full-width: 1210px;
+$content-width: 800px;
+$engr-width: 126px;
+$cfar-width: 405px;
+$engr-cfar-magic: -160px; // amount to shift cfar to still fit engr
+$engr-pad: 150px;
+$big-breakpoint: $full-width + (2 * $engr-pad);
+$little-breakpoint: ($full-width + 2 * $rem);
+$btn-width: 30px;
+$min-width: $engr-width + $rem + $cfar-width + $rem + $btn-width;
+
+@import "footer-position";
+@import "hamburger";
+
+* { box-sizing: border-box; }
+
+body {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: $rem;
+	line-height: $rlh;
+}
+
+a {
+	text-decoration: none;
+}
+
+[aria-hidden="true"] {
+	display: none;
+}
+
+a img { border: 0; }
+
+._body {
+	background-color: black;
+	background-image: url(site-bg-a.jpg);
+	background-position: 50% 100px; // duck below ._sitehead
+	background-repeat: no-repeat;
+	min-width: $min-width;
+}
+
+._sitehead {
+	position: relative;
+	background-color: rgb(180, 180, 180);
+	background-image:
+		linear-gradient(
+			to top,
+			rgba(0, 0, 0, 0.2),
+			rgba(255, 255, 255, 0.2) 100px
+		);
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: -40px; // bleed over bottom border edge
+		background-image: url(/r/uvic-cfar-logo.png);
+		background-repeat: no-repeat;
+		background-position: $engr-cfar-magic 100%;
+
+		@media (min-width: $big-breakpoint) {
+			background-position: 50% 100%;
+		}
+	}
+}
+
+._associations {
+	background-color: $util-bg;
+	color: $util-text;
+	font-size: smaller;
+
+	ul {
+		z-index: 2; // above ._mainmenu
+		display: block;
+		list-style: none;
+		margin: auto;
+		padding: 0.5em $rem;
+		text-align: right;
+		max-width: $full-width;
+
+		@media (min-width: $big-breakpoint) {
+			position: relative;
+			box-sizing: content-box;
+			padding: 0.5em $engr-pad;
+		}
+
+		@media (max-width: $little-breakpoint) {
+			padding-right: $rem;
+		}
+	}
+
+	li {
+		display: inline-block;
+	}
+
+	a,
+	a:link,
+	a:visited {
+		color: $util-text;
+		display: block;
+		margin: 0 0.5em;
+
+		&:hover {
+			color: $util-text-highlight;
+			text-decoration: underline;
+		}
+	}
+
+	li:last-child > a {
+		margin-right: 0;
+	}
+}
+
+._engr {
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
+	// remove whitespace
+	font-size: 0;
+	line-height: 0;
+}
+
+._mainmenu {
+	max-width: $full-width;
+	margin: 0 0 0 ($engr-width + $rem);
+	padding: 30px 0 0;
+	position: relative;
+	z-index: 1;
+
+	@media (min-width: $big-breakpoint) {
+		margin: 0 auto;
+	}
+
+	&__expanded {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: inline-table;
+		position: relative;
+		z-index: 2;
+
+		li {
+			display: table-cell;
+			vertical-align: top;
+			white-space: nowrap;
+			height: $rline + $rem + 28px; // line + padding
+
+			&:nth-child(2) {
+				// separate from ._cfar
+				padding-left: 1em;
+			}
+
+			a,
+			a:link,
+			a:visited {
+				color: white;
+				font-weight: bold;
+				display: block;
+				padding: 0.5em 1em;
+				margin: 0;
+			}
+
+			a:hover {
+				color: black;
+			}
+
+			.current {
+				background-color: rgba(0, 0, 0, 0.1);
+				border-radius: 3px;
+
+				&:hover {
+					color: white;
+				}
+			}
+		}
+	}
+
+	&__collapsed {
+		position: absolute;
+		right: 0;
+		top: 100%;
+	}
+}
+
+._mainmenu__disclose {
+	position: absolute;
+	right: 0;
+	vertical-align: top;
+	border: 0;
+	background: transparent;
+	padding: 5px;
+	margin: 0;
+}
+
+._cfar a {
+	width: $cfar-width;
+	height: $rline + $rem + 28px; // line + padding
+	opacity: 0;
+}
+
+._sitemain {
+	background-color: white;
+	max-width: $full-width;
+	padding: 1.5rem;
+	padding-bottom: 3rem;
+	margin: 45px auto 0;
+
+	@media (max-width: $little-breakpoint) {
+		margin-left: $rem;
+		margin-right: $rem;
+	}
+}
+
+._readable {
+	max-width: 800px;
+	margin: auto;
+}
+
+h1:first-child {
+	margin-top: 0;
+	border-bottom: 1px solid #c3c3c3;
+}
+
+._sitefoot {
+	background: transparentize($util-bg, 0.5);
+	background:
+		linear-gradient(
+			to bottom,
+			transparentize($util-bg, 1),
+			$util-bg 80%
+		);
+	padding: 1.2rem;
+	text-align: center;
+	color: $util-text;
+	font-size: smaller;
+}
