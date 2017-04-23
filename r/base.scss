@@ -133,6 +133,7 @@ a img { border: 0; }
 	&::before {
 		content: "";
 		position: absolute;
+		z-index: -1;
 		top: 0;
 		left: $engr-cfar-magic;
 		width: 2000px;
