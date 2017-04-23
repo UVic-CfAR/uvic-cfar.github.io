@@ -12,14 +12,15 @@ $rlh: 1.125;
 $rline: $rlh * $rem;
 
 $full-width: 1210px;
-$content-width: 800px;
-$engr-width: 126px;
-$cfar-width: 405px;
-$engr-cfar-magic: -160px; // amount to shift cfar to still fit engr
-$engr-pad: 150px;
-$big-breakpoint: $full-width + (2 * $engr-pad);
-$little-breakpoint: ($full-width + 2 * $rem);
-$btn-width: 30px;
+$cfar-width: 410px; // for "UVic CfAR" text inside logo image
+$cfar-height: 62px; // for "UVic CfAR" text inside logo image
+$engr-cfar-magic: -210px; // amount to shift cfar logo to overlap engr nicely
+$menu-top-pad: 30px;
+$engr-aspect: 1.4447513812; // actual aspect ratio of engr logo
+$engr-height: $menu-top-pad + $cfar-height + 14px; // fit to menu height
+$engr-pad: 12px;
+$engr-width: (($engr-height - (2 * $engr-pad)) / $engr-aspect) + (2 * $engr-pad);
+$btn-width: 30px; // for menu toggle button
 $min-width: $engr-width + $rem + $cfar-width + $rem + $btn-width;
 
 @import "footer-position";
@@ -60,22 +61,6 @@ a img { border: 0; }
 			rgba(0, 0, 0, 0.2),
 			rgba(255, 255, 255, 0.2) 100px
 		);
-
-	&::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: -40px; // bleed over bottom border edge
-		background-image: url(/r/uvic-cfar-logo.png);
-		background-repeat: no-repeat;
-		background-position: $engr-cfar-magic 100%;
-
-		@media (min-width: $big-breakpoint) {
-			background-position: 50% 100%;
-		}
-	}
 }
 
 ._associations {
@@ -84,6 +69,7 @@ a img { border: 0; }
 	font-size: smaller;
 
 	ul {
+		position: relative;
 		z-index: 2; // above ._mainmenu
 		display: block;
 		list-style: none;
@@ -91,16 +77,6 @@ a img { border: 0; }
 		padding: 0.5em $rem;
 		text-align: right;
 		max-width: $full-width;
-
-		@media (min-width: $big-breakpoint) {
-			position: relative;
-			box-sizing: content-box;
-			padding: 0.5em $engr-pad;
-		}
-
-		@media (max-width: $little-breakpoint) {
-			padding-right: $rem;
-		}
 	}
 
 	li {
@@ -127,38 +103,56 @@ a img { border: 0; }
 
 ._engr {
 	position: absolute;
-	top: 0;
+	top: 100%;
 	left: 0;
-	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
-	// remove whitespace
-	font-size: 0;
-	line-height: 0;
+	height: $engr-height;
+	width: $engr-width;
+	font-size: 0; // remove whitespace
+	background-color: #f08415; /* http://www.uvic.ca/brand/look-feel/colour/faculty/index.php */
+
+	a {
+		display: block;
+		height: 100%;
+		width: 100%;
+		padding: $engr-pad;
+	}
+
+	img {
+		height: 100%;
+		width: 100%;
+	}
 }
 
 ._mainmenu {
 	max-width: $full-width;
-	margin: 0 0 0 ($engr-width + $rem);
-	padding: 30px 0 0;
+	padding: $menu-top-pad 0 0 ($engr-width + $rem);
+	margin: auto;
 	position: relative;
 	z-index: 1;
 
-	@media (min-width: $big-breakpoint) {
-		margin: 0 auto;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: $engr-cfar-magic;
+		width: 2000px;
+		bottom: -40px;
+		background-image: url(/r/uvic-cfar-logo.png);
+		background-repeat: no-repeat;
+		background-position: 0 100%;
 	}
 
-	&__expanded {
+	&__list {
 		list-style: none;
+		display: inline-table;
 		margin: 0;
 		padding: 0;
-		display: inline-table;
-		position: relative;
-		z-index: 2;
 
 		li {
 			display: table-cell;
 			vertical-align: top;
 			white-space: nowrap;
-			height: $rline + $rem + 28px; // line + padding
+			height: $cfar-height;
 
 			&:nth-child(2) {
 				// separate from ._cfar
@@ -188,20 +182,18 @@ a img { border: 0; }
 				}
 			}
 		}
+
+		._cfar {
+			min-width: $cfar-width;
+
+			a[href][href] { // override :link
+				width: 100%;
+				height: 100%;
+				padding: 0;
+				opacity: 0;
+			}
+		}
 	}
-
-	&__collapsed {
-		position: absolute;
-		right: 0;
-		top: 100%;
-	}
-}
-
-
-._cfar a {
-	width: $cfar-width;
-	height: $rline + $rem + 28px; // line + padding
-	opacity: 0;
 }
 
 ._sitemain {
@@ -211,7 +203,7 @@ a img { border: 0; }
 	padding-bottom: 3rem;
 	margin: 45px auto 0;
 
-	@media (max-width: $little-breakpoint) {
+	@media (max-width: ($full-width + 2 * $rem)) {
 		margin-left: $rem;
 		margin-right: $rem;
 	}
