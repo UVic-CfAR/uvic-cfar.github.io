@@ -1,0 +1,80 @@
+---
+---
+._contactform {
+	display: inline-block; // shrink wrap
+	position: relative;
+
+	input,
+	textarea {
+		display: block;
+		border: 1px solid #aaa;
+		line-height: 1.125;
+		font-size: 16px;
+		font-family: "Helvetica Neue", Arial, sans-serif;
+		padding: 0.25em 0.5em;
+		margin: 0.25em 0 1em;
+	}
+
+	input {
+		width: 250px;
+	}
+
+	textarea {
+		width: 500px;
+		height: 200px;
+	}
+
+	button {
+		line-height: 1.125;
+		font-size: 16px;
+		font-family: "Helvetica Neue", Arial, sans-serif;
+		font-weight: bold;
+		padding: 0.5em 2em;
+		background-color: rgb(246, 138, 31);
+		border: 0;
+		color: white;
+		cursor: pointer;
+
+		&:hover {
+			background-color: black;
+		}
+
+		&:disabled {
+			background-color: #ab7a49;
+		}
+	}
+
+	&__success {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		padding: 0.5em 2em;
+		text-align: center;
+		border: 1px solid green;
+		color: green;
+		background-color: #efe;
+		font-weight: bold;
+
+		p {
+			margin: 0;
+			padding: 0;
+
+			&::before {
+				content: "✓";
+				padding-right: 1em;
+			}
+		}
+	}
+
+	&__fail {
+		position: absolute;
+		top: 20%;
+		width: 70%;
+		left: 15%;
+		padding: 1em 2em;
+		border: 5px solid rgb(246, 138, 31);
+		border-radius: 4px;
+		background-color: #ddd;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+	}
+}
