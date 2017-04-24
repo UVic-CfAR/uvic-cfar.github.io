@@ -4,11 +4,12 @@
 	<title>{% if page.title %}{{page.title}} – {%endif%}UVic CfAR</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=563"/>
-	<link rel="stylesheet" href="/r/greedymenu.css"/>
 	<link rel="stylesheet" href="/r/base.css"/>
 	{% if page.stylesheet %}
 		<link rel="stylesheet" href="/r/{{page.stylesheet}}.css"/>
 	{% endif %}
+	<script src="/jspm_packages/system.js"></script>
+	<script src="/r/config.js"></script>
 </head>
 <body>
 <div class="_body">
@@ -42,7 +43,7 @@
 			<li><a href="/about-us.html" {% if page.url == '/about-us.html' %}class="current"{%endif%}>About Us</a></li>
 		</ul>
 	</nav>
-	<script src="/r/greedymenu.js"></script>
+	<script>SystemJS.import("/r/greedymenu.js")</script>
 </header>
 
 <main class="_sitemain">

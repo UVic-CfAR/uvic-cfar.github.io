@@ -1,4 +1,3 @@
-/* eslint-env es6 */
 /**
  * Greedymenu - hides menu items that don't fit in a popup menu
  *
@@ -10,8 +9,7 @@
  *
  * @author Maxwell Terpstra <telic.detour+github@gmail.com>
  */
-window.greedymenu = (function() {
-"use strict";
+import "./greedymenu.css!";
 
 const MENU_CLASS   = "greedymenu";
 const MENU_S_CLASS = "greedymenu--styled";
@@ -78,7 +76,7 @@ function autoInit() {
 }
 
 let inst = 0; // instance counter; for generating IDs
-function init(nav) {
+export default function init(nav) {
 	// find the first list child
 	const oList = (function() {
 		for (let l of Array.prototype.slice.call(nav.children)) {
@@ -266,6 +264,3 @@ function create(tag, attrMap, children) {
 	}
 	return n;
 }
-
-return init;
-})();

@@ -1,6 +1,3 @@
-/* eslint-env es6 */
-"use strict";
-
 const FORM_SEL = "._contactform";
 const SUCCESS_SEL = "._contactform__success";
 const FAIL_SEL = "._contactform__fail";
