@@ -24,6 +24,15 @@
 		height: 200px;
 	}
 
+	@media (max-width: 800px) {
+		width: 100%;
+
+		input,
+		textarea {
+			width: 100%;
+		}
+	}
+
 	button {
 		line-height: 1.125;
 		font-size: 16px;
