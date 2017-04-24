@@ -79,7 +79,7 @@ let inst = 0; // instance counter; for generating IDs
 export default function init(nav) {
 	// find the first list child
 	const oList = (function() {
-		for (let l of Array.prototype.slice.call(nav.children)) {
+		for (let l of Array.from(nav.children)) {
 			if (l.matches("ul,ol")) {
 				return l;
 			}
