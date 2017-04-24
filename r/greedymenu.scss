@@ -1,0 +1,125 @@
+---
+---
+// in case it isn't already
+[aria-hidden="true"] {
+	visibility: hidden;
+}
+
+// root nav
+.greedymenu {
+	position: relative;
+
+	& > ul, & > ol {
+		display: inline-table;
+
+		& > li {
+			display: table-cell;
+		}
+	}
+}
+
+// reserve right-padding for the button
+.greedymenu__original {
+	padding-right: 0 !important;
+}
+
+// overflow list
+.greedymenu__flyout {
+	position: absolute;
+	display: block;
+
+	& > li {
+		display: block;
+	}
+}
+
+// menu button
+.greedymenu__button {
+	position: absolute;
+	cursor: pointer;
+	line-height: 0;
+
+	&__icon {
+		stroke: currentColor;
+		stroke-width: 1px;
+		height: 20px;
+		width: 20px;
+	}
+}
+
+// basic styling (opt-in)
+.greedymenu--styled {
+	@extend .greedymenu;
+
+	// as a vertical blocky list
+	.greedymenu__flyout {
+		display: block;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 100%;
+		right: 0;
+		list-style: none;
+		background-color: white;
+		border: 1px solid #555;
+
+		& > li {
+			display: block;
+			margin: 0;
+			padding: 0.5em 1em;
+
+			& > a {
+				display: block;
+				margin: -0.5em -1em;
+				padding: 0.5em 1em;
+			}
+		}
+	}
+
+	// simple black on white icon with badge
+	.greedymenu__button {
+		// remove default button appearance
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		background: transparent;
+		margin: 0;
+		border: 0;
+		padding: 5px;
+		color: black;
+	}
+}
+
+// non-visible elements used for JS tasks
+.greedymenu__resizerTool {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 1px;
+	overflow: hidden;
+	z-index: -1;
+	visibility: hidden;
+}
+.greedymenu__resizerTool__grow,
+.greedymenu__resizerTool__shrink {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	transition: 0s;
+}
+.greedymenu__resizerTool__grow {
+	width: 100000px;
+}
+.greedymenu__resizerTool__shrink {
+	width: 200%;
+}
+.greedymenu__measureTool {
+	position: absolute;
+	z-index: -1;
+	visibility: hidden;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	height: 1px;
+}

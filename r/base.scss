@@ -20,7 +20,7 @@ $engr-aspect: 1.4447513812; // actual aspect ratio of engr logo
 $engr-height: $menu-top-pad + $cfar-height + 14px; // fit to menu height
 $engr-pad: 12px;
 $engr-width: (($engr-height - (2 * $engr-pad)) / $engr-aspect) + (2 * $engr-pad);
-$btn-width: 30px; // for menu toggle button
+$btn-width: 40px; // for menu toggle button
 $min-width: $engr-width + $rem + $cfar-width + $rem + $btn-width;
 
 @import "footer-position";
@@ -193,6 +193,27 @@ a img { border: 0; }
 				padding: 0;
 				opacity: 0;
 			}
+		}
+	}
+
+	.greedymenu__button {
+		top: $menu-top-pad + 5px;
+
+		&__icon {
+			height: $btn-width;
+			width: $btn-width;
+		}
+	}
+
+	.greedymenu__flyout {
+		top: $engr-height !important;
+
+		.current {
+			background-color: #ddd;
+		}
+
+		@media (max-width: 800px) {
+			width: 100%;
 		}
 	}
 }
