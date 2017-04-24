@@ -5,3 +5,9 @@ exclude:
   - node_modules
   - Gemfile
   - Gemfile.lock
+defaults:
+  -
+    scope:
+      path: "" # everything
+    values:
+      layout: "default"
