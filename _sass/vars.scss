@@ -1,0 +1,19 @@
+$util-bg: black;
+$util-text: #9b9b9b;
+$util-text-highlight: white;
+
+$rem: 16px;
+$rlh: 1.125;
+$rline: $rlh * $rem;
+
+$full-width: 1210px;
+$cfar-width: 410px; // for "UVic CfAR" text inside logo image
+$cfar-height: 62px; // for "UVic CfAR" text inside logo image
+$engr-cfar-magic: -210px; // amount to shift cfar logo to overlap engr nicely
+$menu-top-pad: 30px;
+$engr-aspect: 1.4447513812; // actual aspect ratio of engr logo
+$engr-height: $menu-top-pad + $cfar-height + 14px; // fit to menu height
+$engr-pad: 12px;
+$engr-width: (($engr-height - (2 * $engr-pad)) / $engr-aspect) + (2 * $engr-pad);
+$btn-width: 40px; // for menu toggle button
+$min-width: $engr-width + $rem + $cfar-width + $rem + $btn-width;
