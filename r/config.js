@@ -8,10 +8,6 @@ System.config({
       "optimisation.modules.system"
     ]
   },
-  paths: {
-    "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*"
-  },
 
   map: {
     "babel": "npm:babel-core@5.8.38",
