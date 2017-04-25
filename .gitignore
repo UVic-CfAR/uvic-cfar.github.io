@@ -3,3 +3,4 @@ Gemfile
 Gemfile.lock
 jspm_packages/
 node_modules/
+.jekyll-metadata
