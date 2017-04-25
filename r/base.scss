@@ -24,6 +24,7 @@ a {
 }
 
 a img { border: 0; }
+img { max-width: 100%; }
 
 ._body {
 	background-color: black;
@@ -199,7 +200,6 @@ a img { border: 0; }
 	}
 
 	& > img {
-		max-width: 100%;
 		display: block;
 	}
 }
