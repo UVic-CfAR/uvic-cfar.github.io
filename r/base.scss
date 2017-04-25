@@ -23,7 +23,8 @@ a {
 	display: none;
 }
 
-a img { border: 0; }
+a img, iframe { border: 0; }
+
 img { max-width: 100%; }
 
 ._body {
