@@ -1,0 +1,85 @@
+---
+---
+@import "vars";
+
+.people__core,
+.people__associate,
+.people__more {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	dl, dt, dd {
+		margin: 0;
+		padding: 0;
+	}
+
+	dl {
+		display: inline-block;
+		margin: $rem;
+		text-align: center;
+	}
+
+	dt {
+		position: relative;
+		display: block;
+		margin: 0 auto;
+		background: black;
+		overflow: hidden;
+		color: white;
+		border-radius: 6px;
+		padding: $rem / 2;
+
+		a {
+			display: block;
+			color: white;
+			margin: -($rem / 2);
+			padding: $rem / 2;
+
+			&:hover {
+				background-color: $cfar-orange;
+
+				img {
+					filter: none;
+				}
+
+				span {
+					background-color: $cfar-orange;
+				}
+			}
+		}
+	}
+
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		filter: grayscale(1);
+	}
+
+	span {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: $rem / 2;
+		background-color: transparentize(black, 0.4);
+	}
+}
+
+.people__core {
+	font-size: larger;
+	max-width: (200px + (2 * $rem)) * 3; // fit 3 across at most
+
+	dl { width: 200px; }
+	dt { height: 216px; }
+}
+
+.people__associate {
+	dl { width: 160px; }
+}
+
+.people__more {
+	dl { min-width: 100px; }
+}
