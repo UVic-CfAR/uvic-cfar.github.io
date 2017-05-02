@@ -30,6 +30,10 @@
 		border-radius: 6px;
 		padding: $rem / 2;
 
+		&.hasLink {
+			border: 3px solid $cfar-orange;
+		}
+
 		a {
 			display: block;
 			color: white;
