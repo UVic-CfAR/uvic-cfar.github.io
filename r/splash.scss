@@ -20,12 +20,12 @@
 			to bottom,
 			transparent,
 			transparent 15%,
-			#333
+			rgba(black, 0.7)
 		),
-		url(/images/Main_UAV.png);
+		url(/images/splash.jpg);
 	background-repeat: no-repeat;
-	background-size: 100% 100%, 100% auto;
-	background-position: top center;
+	background-size: 100% 100%, cover;
+	background-position: center;
 	border-radius: 4px;
 	color: white;
 	padding: 2 * $rem;
@@ -35,7 +35,7 @@
 		margin: (-$rem) (-$rem) 0;
 		text-align: center;
 		font-size: 66px;
-		padding: 12% 0 (3 * $rem);
+		padding: (4 * $rem) 0;
 		text-shadow: 1px 1px 3px black;
 		border-bottom: 5px solid $cfar-orange;
 
@@ -46,6 +46,10 @@
 		@media (max-width: 800px) {
 			font-size: 40px;
 		}
+	}
+
+	p {
+		line-height: 1.5;
 	}
 }
 
