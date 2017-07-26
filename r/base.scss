@@ -86,13 +86,27 @@ img { max-width: 100%; }
 }
 
 ._engr {
+	$engrOrange: #f08415; /* http://www.uvic.ca/brand/look-feel/colour/faculty/index.php */
 	position: absolute;
-	top: 100%;
+	top: 18px;
 	left: 0;
 	height: $engr-height;
 	width: $engr-width;
 	font-size: 0; // remove whitespace
-	background-color: #f08415; /* http://www.uvic.ca/brand/look-feel/colour/faculty/index.php */
+	background-color: $engrOrange;
+	box-shadow: 1px 1px 5px rgba(black, 0.75);
+
+	&::before {
+		content: "";
+		position: absolute;
+		height: 0;
+		width: 0;
+		top: 0;
+		left: -10px;
+		border: 0px solid transparent;
+		border-bottom: 10px solid $engrOrange;
+		border-left-width: 10px;
+	}
 
 	a {
 		display: block;
