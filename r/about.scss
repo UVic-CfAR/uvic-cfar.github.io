@@ -21,54 +21,31 @@
 	}
 
 	dt {
-		position: relative;
 		display: block;
 		margin: 0 auto;
 		background: black;
 		overflow: hidden;
 		color: white;
 		border-radius: 6px;
-		padding: $rem / 2;
 
 		&.hasLink {
-			border: 3px solid $cfar-orange;
-		}
-
-		a {
-			display: block;
-			color: white;
-			margin: -($rem / 2);
-			padding: $rem / 2;
-
-			&:hover {
-				background-color: $cfar-orange;
-
-				img {
-					filter: none;
-				}
-
-				span {
-					background-color: $cfar-orange;
-				}
-			}
+			// link will do the rounding and bg instead
+			overflow: visible;
+			background: transparent;
 		}
 	}
 
-	img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		filter: grayscale(1);
-	}
+	a {
+		display: block;
+		color: white;
+		border-radius: 6px;
+		overflow: hidden;
+		background: black;
+		border: 3px solid $cfar-orange;
 
-	span {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		padding: $rem / 2;
-		background-color: transparentize(black, 0.4);
+		&:hover {
+			background-color: $cfar-orange;
+		}
 	}
 }
 
@@ -77,11 +54,40 @@
 	max-width: (200px + (2 * $rem)) * 3; // fit 3 across at most
 
 	dl { width: 200px; }
-	dt { height: 216px; }
+
+	dt { padding: 0; }
+
+	span {
+		display: block;
+		padding: $rem / 2;
+	}
+
+	img {
+		filter: grayscale(1);
+	}
+
+	:hover img {
+		filter: none;
+	}
+}
+
+.people__associate,
+.people__more {
+	dt {
+		padding: $rem / 2;
+
+		&.hasLink {
+			padding: 0;
+		}
+	}
+
+	a {
+		padding: $rem / 2;
+	}
 }
 
 .people__associate {
-	dl { width: 160px; }
+	dl { min-width: 160px; }
 }
 
 .people__more {
