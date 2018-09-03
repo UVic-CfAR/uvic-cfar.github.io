@@ -1,3 +1,5 @@
+(function() {
+
 const FORM_SEL = "._contactform";
 const SUCCESS_SEL = "._contactform__success";
 const FAIL_SEL = "._contactform__fail";
@@ -46,3 +48,5 @@ document.addEventListener('keyup', function(e) {
 			.forEach((i)=>i.setAttribute('aria-hidden', true));
 	}
 });
+
+})();
