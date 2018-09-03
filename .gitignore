@@ -1,4 +1,5 @@
 _site/
+_assets/
 Gemfile
 Gemfile.lock
 .jekyll-metadata
