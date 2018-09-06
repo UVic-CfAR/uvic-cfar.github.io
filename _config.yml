@@ -5,6 +5,7 @@ exclude:
   - node_modules
   - Gemfile
   - Gemfile.lock
+theme:
 defaults:
   -
     scope:
