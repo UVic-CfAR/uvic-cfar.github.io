@@ -3,11 +3,11 @@
 <head>
 	<title>{% if page.title %}{{page.title}} – {%endif%}UVic CfAR</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=563"/>
+	<meta name="viewport" content="width=device-width, user-scalable=yes"/>
 	<link rel="stylesheet" href="/r/base.css"/>{% if page.stylesheet %}
 	<link rel="stylesheet" href="/r/{{page.stylesheet}}.css"/>{% endif %}
 </head>
-<body>
+<body class="noJS">
 <div class="_body">
 
 <header class="_sitehead">
@@ -28,10 +28,19 @@
 			<li><a href="https://onlineacademiccommunity.uvic.ca/rocketry/">UVic Rocketry</a></li>
 		</ul>
 	</nav>
-
-	<nav class="_mainmenu greedymenu--styled">
-		<ul class="_mainmenu__list">
-			<li class="_cfar greedymenu__fixed"><a href="/" {% if page.url == '/' %}class="current"{%endif%}>Home</a></li>
+	<div class="_cfar">
+		<h1><a href="/">UVic CfAR</a></h1>
+	</div>
+	<button type="button" class="_menuToggle" aria-expanded="true" aria-controls="a1">
+		<svg viewbox="0 0 6 6">
+			<line y1="1" y2="1" x1="0" x2="6" />
+			<line y1="3" y2="3" x1="0" x2="6" />
+			<line y1="5" y2="5" x1="0" x2="6" />
+		</svg>
+	</button>
+	<nav class="_mainmenu">
+		<ul id="a1">
+			<li><a href="/">Home</a></li>
 			<li><a href="/research.html" {% if page.url == '/research.html' %}class="current"{%endif%}>Research</a></li>
 			<li><a href="/partnerships.html" {% if page.url == '/partnerships.html' %}class="current"{%endif%}>Partnerships</a></li>
 			<li><a href="/collaborators.html" {% if page.url == '/collaborators.html' %}class="current"{%endif%}>Collaborators</a></li>
@@ -39,6 +48,7 @@
 			<li><a href="/about-us.html" {% if page.url == '/about-us.html' %}class="current"{%endif%}>About Us</a></li>
 		</ul>
 	</nav>
+	<script src="/r/menu.js"></script>
 </header>
 
 <main class="_sitemain">

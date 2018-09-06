@@ -3,19 +3,47 @@ $util-text: #9b9b9b;
 $util-text-highlight: white;
 
 $cfar-orange: rgb(246, 138, 31);
+$engr-orange: #f08415; /* http://www.uvic.ca/brand/look-feel/colour/faculty/index.php */
 
 $rem: 16px;
 $rlh: 1.125;
 $rline: $rlh * $rem;
 
-$full-width: 1210px;
-$cfar-width: 410px; // for "UVic CfAR" text inside logo image
-$cfar-height: 62px; // for "UVic CfAR" text inside logo image
-$engr-cfar-magic: -210px; // amount to shift cfar logo to overlap engr nicely
-$menu-top-pad: 30px;
-$engr-aspect: 1.4447513812; // actual aspect ratio of engr logo
-$engr-height: $menu-top-pad + $cfar-height + 14px; // fit to menu height
+$hbar-height: 88px; // height of gray h1 header bar
+
+$engr-aspect: 1.4447513812; // engr logo aspect ratio
+$engr-fold: 10px; // size of fold around hbar
 $engr-pad: 12px;
+$engr-height: $hbar-height + $engr-fold;
 $engr-width: (($engr-height - (2 * $engr-pad)) / $engr-aspect) + (2 * $engr-pad);
-$btn-width: 40px; // for menu toggle button
-$min-width: $engr-width + $rem + $cfar-width + $rem + $btn-width;
+
+// placement and dimensions of "UVic CfAR" text in logo image
+$cfar-width: 410px;
+$cfar-part-width: 208px; // width of just "CfAR" part
+$cfar-height: 65px;
+$cfar-y-offset: 18px; // distance from top of hbar to top of cfar text box
+$cfar-overhang: 11px; // visual overhand of orange stripe below hbar
+
+$btn-size: 40px; // size of menu toggle button
+
+$footer-height: 3 * $rem;
+
+$full-width: 1200px; // will not grow above this
+$menu-break: 1150px; // below this,  menu toggle button and dropdown will be used
+$padding-break: $rem + $engr-width + $rem + $cfar-width + $rem + $btn-size + $rem; // above this, everything will have at least 1rem padding from body edges
+$min-width: 375px; // will not shrink below this
+
+@mixin pad-media {
+	@media (min-width: $padding-break) {
+		margin-left: $rem;
+		margin-right: $rem;
+	}
+}
+
+@mixin big-center-media {
+	@media (min-width: #{$full-width + 2 * $rem}) {
+		// center when really big
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

@@ -1,0 +1,186 @@
+@import "vars";
+
+.noJS ._menuToggle { display: none }
+
+._menuToggle {
+	position: absolute;
+	z-index: 3;
+	right: 0;
+	top: 58px;
+	height: $btn-size;
+	width: #{$btn-size + $rem};
+	padding: 0 $rem 0 0;
+	border: 0;
+	background: none;
+	appearance: none;
+	stroke: white;
+	stroke-width: 1px;
+	filter: drop-shadow(2px 2px 2px rgba(black, 0.4));
+
+	&:hover { cursor: pointer }
+
+	svg {
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+._mainmenu {
+	position: relative;
+	z-index: 1; // below hbar
+	max-width: $full-width;
+	margin-bottom: #{-$cfar-overhang};
+	text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	$item-separator: 3px solid #cacaca;
+
+	ul {
+		position: relative;
+		z-index: 1;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		padding-top: 2 * $cfar-overhang;
+		background-color: hsl(0, 0, 70%);
+		border-top: 1px solid #777; // border to hbar
+		border-bottom: $item-separator;
+	}
+
+	li {
+		border-top: $item-separator;
+		margin: 0;
+	}
+
+	// "home" link (already have one in hbar)
+	li:first-child { display: none }
+
+	@mixin linktext {
+		color: white;
+		text-shadow: 1px 1px 1px rgba(black, 0.6);
+	}
+
+	a, a:link, a:visited {
+		display: block;
+		font-weight: bold;
+		padding: #{0.5 * $rem} $rem #{0.5 * $rem} #{$engr-width + $rem};
+		@include linktext;
+
+		&:hover {
+			color: black;
+			text-shadow: 1px 1px rgba(white, 0.4);
+		}
+	}
+
+	a.current {
+		background-color: rgba(black, 0.15);
+
+		&:hover { // don't change on hover
+			@include linktext;
+		}
+	}
+
+	@include pad-media;
+	@include big-center-media;
+}
+
+
+/****************/
+/** ANIMATIONS **/
+/****************/
+
+._mainmenu {
+	transition: opacity 0.5s, transform 0.5s, visibility 0.5s;
+}
+
+._menuToggle line {
+	transition: transform 0.5s, opacity 0.5s;
+}
+
+._menuToggle[aria-expanded="true"] {
+	line:nth-child(1) { transform: rotate(45deg) translate(1px, -1px) }
+	line:nth-child(2) { opacity: 0 }
+	line:nth-child(3) { transform: rotate(-45deg) translate(-3px, -1px) }
+}
+
+._menuToggle[aria-expanded="true"] + ._mainmenu {
+	transform: translateY(0);
+	opacity: 1;
+	visibility: visible;
+}
+
+._menuToggle[aria-expanded="false"] + ._mainmenu {
+	position: absolute;
+	width: 100%;
+	transform: translateY(-10px);
+	opacity: 0;
+	visibility: hidden;
+}
+
+
+/************************/
+/** Non-mobile version **/
+/************************/
+
+@media (min-width: $menu-break) {
+	._menuToggle { display: none }
+
+	// absolutize hbar so that mainmenu overlaps it
+	._cfar {
+		position: absolute;
+		width: 100%;
+	}
+
+	// menu should always be visible
+	._menuToggle[aria-expanded="false"] + ._mainmenu {
+		position: relative;
+		width: auto;
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+		transition: none;
+	}
+
+	._mainmenu {
+		z-index: 3; // above hbar
+		margin-bottom: 0;
+
+		ul {
+			text-align: right;
+			border: none;
+			background: none;
+			min-height: $hbar-height;
+			padding-left: #{$engr-width + $rem + $cfar-width};
+			padding-top: 22px; // magic number depending on $hbar-height and $cfar-y-offset
+		}
+
+		li {
+			display: inline-block;
+			border: none;
+			white-space: nowrap;
+		}
+
+		// since mainmenu is covering hbar, recreate cfar link with Home
+		li:first-child {
+			display: block;
+			position: absolute;
+			top: $cfar-y-offset;
+			left: #{$engr-width + $rem};
+
+			a {
+				height: $cfar-height;
+				width: $cfar-width;
+				text-indent: 100%;
+				overflow: hidden;
+			}
+		}
+
+		a, a:link, a:visited {
+			padding: 0.5em 1em;
+			border-radius: 4px;
+		}
+	}
+}

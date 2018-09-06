@@ -1,0 +1,20 @@
+@import "vars";
+
+* { box-sizing: border-box }
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: $rem;
+	line-height: $rlh;
+	height: 100%;
+}
+
+a { text-decoration: none }
+
+[aria-hidden="true"] { display: none }
+
+a img, iframe { border: 0 }
+
+img { max-width: 100% }

@@ -4,237 +4,193 @@
 @charset "UTF-8";
 
 @import "vars";
-@import "footer-position";
-@import "hamburger";
+@import "reset";
+@import "menu";
 
-* { box-sizing: border-box; }
-
-body {
-	font-family: "Helvetica Neue", Arial, sans-serif;
-	font-size: $rem;
-	line-height: $rlh;
-	background-color: black;
-}
-
-a {
-	text-decoration: none;
-}
-
-[aria-hidden="true"] {
-	display: none;
-}
-
-a img, iframe { border: 0; }
-
-img { max-width: 100%; }
+body { background-color: black }
 
 ._body {
 	background-color: black;
 	background-image: url(site-bg-a.jpg);
-	background-position: 50% 100px; // duck below ._sitehead
+	background-position: 50% $hbar-height;
 	background-repeat: no-repeat;
+	overflow: hidden;
 	min-width: $min-width;
+	max-width: 100vw;
+	min-height: 100%;
+	padding-bottom: $footer-height;
+	margin-bottom: -$footer-height;
 }
 
 ._sitehead {
 	position: relative;
-	background-color: rgb(180, 180, 180);
-	background-image:
-		linear-gradient(
-			to top,
-			rgba(0, 0, 0, 0.2),
-			rgba(255, 255, 255, 0.2) 100px
-		);
+	z-index: 1;
 }
 
 ._associations {
-	background-color: $util-bg;
-	color: $util-text;
-	font-size: smaller;
+  background-color: $util-bg;
+  color: $util-text;
+  font-size: 0.875 * $rem;
 
-	ul {
-		position: relative;
-		z-index: 2; // above ._mainmenu
-		display: block;
-		list-style: none;
-		margin: auto;
-		padding: 0.5em $rem;
-		text-align: right;
-		max-width: $full-width;
-	}
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.5em $rem;
+    text-align: right;
+    max-width: $full-width;
+    position: relative; // capture ._engr
+    z-index: 3;
 
-	li {
-		display: inline-block;
-	}
+		@include pad-media;
+		@include big-center-media;
+  }
 
-	a,
-	a:link,
-	a:visited {
-		color: $util-text;
-		display: block;
-		margin: 0 0.5em;
+  li {
+    display: inline-block;
+  }
 
-		&:hover {
-			color: $util-text-highlight;
-			text-decoration: underline;
-		}
-	}
+  a, a:link, a:visited {
+    color: inherit;
+    display: block;
+    margin: 0 0.5em;
 
-	li:last-child > a {
-		margin-right: 0;
-	}
+    &:hover {
+      color: $util-text-highlight;
+      text-decoration: underline;
+    }
+  }
+
+  li:last-child > a {
+    margin-right: 0;
+  }
+
+  @at-root {
+    ._engr {
+      position: absolute;
+      top: 100%;
+      margin-top: -#{$engr-fold + 1px};
+      left: 0;
+      height: $engr-height;
+      width: $engr-width;
+      font-size: 0; // remove whitespace
+      background-color: $engr-orange;
+      box-shadow: 1px 1px 5px rgba(black, 0.75);
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 0;
+        width: 0;
+        top: 0;
+        right: #{-$engr-fold};
+        border: 0 solid transparent;
+        border-bottom: $engr-fold solid darken($engr-orange, 25%);
+        border-right-width: $engr-fold;
+      }
+
+      a {
+        display: block;
+        padding: $engr-pad;
+      }
+
+      a, img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
 }
 
-._engr {
-	$engrOrange: #f08415; /* http://www.uvic.ca/brand/look-feel/colour/faculty/index.php */
-	position: absolute;
-	top: 18px;
-	left: 0;
-	height: $engr-height;
-	width: $engr-width;
-	font-size: 0; // remove whitespace
-	background-color: $engrOrange;
-	box-shadow: 1px 1px 5px rgba(black, 0.75);
+._cfar {
+  background-color: hsl(0, 0, 70%);
+  background-image:
+    linear-gradient(
+      to top,
+      rgba(black, 0.2),
+      rgba(white, 0.2)
+    );
+  margin: 0;
+  height: $hbar-height;
+  box-shadow: 0 1px black; // instead of border, so ._mainmenu will overlap nicely
 
-	&::before {
-		content: "";
-		position: absolute;
-		height: 0;
-		width: 0;
-		top: 0;
-		left: -10px;
-		border: 0px solid transparent;
-		border-bottom: 10px solid $engrOrange;
-		border-left-width: 10px;
-	}
+  h1 {
+    max-width: $full-width;
+    padding: $cfar-y-offset 0 0 #{$engr-width + $rem};
+    margin: 0;
+    position: relative;
+    z-index: 2;
 
-	a {
-		display: block;
-		height: 100%;
-		width: 100%;
-		padding: $engr-pad;
-	}
+    &::before {
+      position: absolute;
+      z-index: -1; // below link
+      top: 25px; // magic number to align orange stripe where we want it
+      left: -342px; // magic number to align "CfAR" text in heading position
+      content: url(cfar-logo.png);
+      pointer-events: none;
 
-	img {
-		height: 100%;
-		width: 100%;
-	}
-}
+			@media (min-width: $padding-break) {
+      	left: -141px; // magic number to align cfar text where we want it
+      }
+    }
 
-._mainmenu {
-	max-width: $full-width;
-	padding: $menu-top-pad 0 0 ($engr-width + $rem);
-	margin: auto;
-	position: relative;
-	z-index: 1;
+		@include pad-media;
+		@include big-center-media;
+  }
 
-	&::before {
-		content: "";
-		position: absolute;
-		z-index: -1;
-		top: 0;
-		left: $engr-cfar-magic;
-		width: 2000px;
-		bottom: -40px;
-		background-image: url(/r/uvic-cfar-logo.png);
-		background-repeat: no-repeat;
-		background-position: 0 100%;
-	}
+  a {
+    display: block;
+    margin: 0;
+    height: $cfar-height;
+    width: $cfar-part-width;
+    text-indent: -99em;
+    overflow: hidden;
 
-	&__list {
-		list-style: none;
-		display: inline-table;
-		margin: 0;
-		padding: 0;
-
-		li {
-			display: table-cell;
-			vertical-align: top;
-			white-space: nowrap;
-			height: $cfar-height;
-
-			&:nth-child(2) {
-				// separate from ._cfar
-				padding-left: 1em;
-			}
-
-			a,
-			a:link,
-			a:visited {
-				color: white;
-				font-weight: bold;
-				display: block;
-				padding: 0.5em 1em;
-				margin: 0;
-			}
-
-			a:hover {
-				color: black;
-			}
-
-			.current {
-				background-color: rgba(0, 0, 0, 0.1);
-				border-radius: 3px;
-
-				&:hover {
-					color: white;
-				}
-			}
-		}
-
-		._cfar {
-			min-width: $cfar-width;
-
-			a[href][href] { // override :link
-				width: 100%;
-				height: 100%;
-				padding: 0;
-				opacity: 0;
-			}
-		}
-	}
+    @media (min-width: $padding-break) {
+    	width: $cfar-width;
+    }
+  }
 }
 
 ._sitemain {
 	background-color: white;
 	max-width: $full-width;
-	padding: 1.5rem;
-	padding-bottom: 3rem;
-	margin: 45px auto 0;
+	padding: 1.5 * $rem;
+	padding-bottom: 3 * $rem;
+  margin: #{$rem + $cfar-overhang} $rem 0; // note: *always* has left/right pad
 
-	@media (max-width: ($full-width + 2 * $rem)) {
-		margin-left: $rem;
-		margin-right: $rem;
-	}
+	@include big-center-media;
 }
 
 ._readable {
 	& > * {
-		max-width: 650px;
+		max-width: 650px; // a nice reading width
 		margin-left: auto;
 		margin-right: auto;
 	}
 
 	& > img {
+		max-width: 100%;
 		display: block;
 	}
 }
 
-h1:first-child {
+main h1:first-child {
 	margin-top: 0;
 	border-bottom: 1px solid #c3c3c3;
 }
 
 ._sitefoot {
-	background: transparentize($util-bg, 0.5);
-	background:
-		linear-gradient(
-			to bottom,
-			transparentize($util-bg, 1),
-			$util-bg 80%
-		);
-	padding: 1.2rem;
+  background:
+    radial-gradient(
+      ellipse $full-width $footer-height at 50% 100%,
+      rgba($util-bg, 0.8),
+      rgba($util-bg, 0)
+    );
+	padding: 1.2 * $rem;
 	text-align: center;
 	color: $util-text;
 	font-size: smaller;
+	height: $footer-height;
+	text-shadow: 1px 1px 1px black;
+	min-width: $min-width;
 }
