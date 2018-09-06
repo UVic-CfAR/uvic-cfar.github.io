@@ -34,8 +34,8 @@
 	h1 {
 		margin: (-$rem) (-$rem) 0;
 		text-align: center;
-		font-size: 66px;
-		padding: (4 * $rem) 0;
+		font-size: 40px;
+		padding: 0 0 #{2 * $rem};
 		text-shadow: 1px 1px 3px black;
 		border-bottom: 5px solid $cfar-orange;
 
@@ -43,8 +43,9 @@
 			color: $cfar-orange;
 		}
 
-		@media (max-width: 800px) {
-			font-size: 40px;
+		@media (min-width: $menu-break) {
+			font-size: 66px;
+			padding: #{4 * $rem} 0;
 		}
 	}
 
