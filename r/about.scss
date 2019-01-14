@@ -9,6 +9,10 @@
 	justify-content: center;
 	flex-wrap: wrap;
 
+	h3 {
+		width: 100%;
+	}
+
 	dl, dt, dd {
 		margin: 0;
 		padding: 0;
@@ -16,6 +20,7 @@
 
 	dl {
 		display: inline-block;
+		vertical-align: top;
 		margin: $rem;
 		text-align: center;
 	}
