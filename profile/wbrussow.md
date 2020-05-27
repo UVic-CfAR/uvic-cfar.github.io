@@ -1,16 +1,21 @@
 ---
 ---
-<img src="Willem.png"/>
-<h1>Staff: Willem Brussow</h1>
+![Willem Brussow](Willem.png)
 
-<h2>Job Description</h2>
-<p>Mechanical Lead</p>
+# Staff: Willem Brussow
 
-<h2>Summary of Responsibilities</h2>
-<p>Willem has extensive experience in operating and designing UAV’s. He has been with CfAR since its inception, in a design and pilot role. His primary responsibility is overseeing the mechanical design of a large scale technical demonstration vehicle being developed for Bombardier and NRC, as well as the mechanical design of AUV components.</p>
+## Job Description
 
-<h2>Industry Sponsor</h2>
-<p>Bombardier</p>
+Mechanical Lead
 
-<h2>Personal interests and hobbies</h2>
-<p>Soccer, kiteboarding, sailing, cooking</p>
+## Summary of Responsibilities
+
+Willem has extensive experience in operating and designing UAV’s. He has been with CfAR since its inception, in a design and pilot role. His primary responsibility is overseeing the mechanical design of a large scale technical demonstration vehicle being developed for Bombardier and NRC, as well as the mechanical design of AUV components.
+
+## Industry Sponsor
+
+Bombardier
+
+## Personal interests and hobbies
+
+Soccer, kiteboarding, sailing, cooking
