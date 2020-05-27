@@ -1,8 +1,8 @@
 ---
+title: Jay Matlock
+role: graduate student
+photo: /profile/jay.png
 ---
-![Jay Matlock](/profile/jay.png)
-
-# Graduate student: Jay Matlock
 
 Master of Applied Science in Mechanical Engineering
 

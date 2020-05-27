@@ -1,8 +1,8 @@
 ---
+title: Stephen Warwick
+role: staff
+photo: /profile/stephen.png
 ---
-![Stephen Warwick](/profile/stephen.png)
-
-# Staff: Stephen Warwick
 
 ## Job Description
 

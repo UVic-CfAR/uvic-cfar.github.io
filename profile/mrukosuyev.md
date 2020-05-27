@@ -1,6 +1,7 @@
 ---
+title: Maxym Rukosuyev
+role: staff
 ---
-# Staff: Maxym Rukosuyev
 
 PhD in Mechanical Engineering
 

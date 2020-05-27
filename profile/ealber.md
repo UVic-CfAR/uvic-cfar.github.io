@@ -1,8 +1,8 @@
 ---
+title: Eldad Alber
+role: staff
+photo: /profile/eldad.png
 ---
-![Eldad Alber](/profile/eldad.png)
-
-# Staff: Eldad Alber
 
 ## Job Description
 

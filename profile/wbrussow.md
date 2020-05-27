@@ -1,8 +1,8 @@
 ---
+title: Willem Brussow
+role: staff
+photo: /profile/Willem.png
 ---
-![Willem Brussow](Willem.png)
-
-# Staff: Willem Brussow
 
 ## Job Description
 

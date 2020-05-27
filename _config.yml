@@ -12,3 +12,9 @@ defaults:
       path: "" # everything
     values:
       layout: "default"
+  -
+    scope:
+      path: "profile"
+      type: "pages"
+    values:
+      layout: "profile"

@@ -1,8 +1,8 @@
 ---
+title: Emiliano Manfredonia
+role: graduate student
+photo: /profile/emiliano.png
 ---
-![Emiliano Manfredonia](/profile/emiliano.png)
-
-# Graduate Student: Emiliano Manfredonia
 
 ## Thesis Title
 

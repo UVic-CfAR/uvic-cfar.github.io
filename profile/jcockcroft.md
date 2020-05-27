@@ -1,8 +1,8 @@
 ---
+title: Josh Cockroft
+role: staff
+photo: /profile/josh.png
 ---
-![Josh Cockroft](/profile/josh.png)
-
-# Staff: Josh Cockcroft
 
 ## Job Description
 

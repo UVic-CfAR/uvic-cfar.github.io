@@ -1,8 +1,8 @@
 ---
+title: Jury Mura
+role: graduate student
+photo: /profile/jury.png
 ---
-![Jury Mura](/profile/jury.png)
-
-# Graduate student: Jury Mura
 
 ## Thesis Title
 

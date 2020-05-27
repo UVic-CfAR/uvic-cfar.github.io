@@ -1,6 +1,7 @@
 ---
+title: Peter Sherk
+role: staff
 ---
-# Staff: Peter Sherk
 
 ## Job Description
 

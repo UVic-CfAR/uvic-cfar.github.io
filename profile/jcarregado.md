@@ -1,8 +1,8 @@
 ---
+title: José Carregado
+role: graduate student
+photo: /profile/Jose.png
 ---
-![José Carregado](/profile/Jose.png)
-
-# Graduate student: José Carregado
 
 ## Thesis Title
 
